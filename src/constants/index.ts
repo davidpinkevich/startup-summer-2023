@@ -10,5 +10,7 @@ const AUTH_DATA: TAuthenticationData = {
 };
 
 const BASE_URL = 'https://startup-summer-2023-proxy.onrender.com/2.0/';
+const PAGINATION_COUNT = 4;
+const PAGINATION_LENGTH = 3;
 
-export { AUTH_DATA, BASE_URL };
+export { AUTH_DATA, BASE_URL, PAGINATION_COUNT, PAGINATION_LENGTH };
