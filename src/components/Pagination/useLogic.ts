@@ -1,18 +1,26 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { savePaginationMain } from '../../redux/slice';
+import { savePaginationMain, savePaginationFavor } from '../../redux/slice';
 import { createArray } from '../../utils';
 
-export function useLogicPagination(currentArray: Array<number>, pages: number, current: number) {
+export function useLogicPagination(
+  arrayPagMain: Array<number>,
+  totalPages: number,
+  currentVac: number,
+  arrayPagFavor: Array<number>,
+  currentFav: number,
+  typePage: string
+) {
   const dispatch = useDispatch();
   useEffect(() => {
-    if (pages >= 3) {
-      const newArray = createArray(currentArray, current, pages);
+    if (typePage === 'main') {
+      const newArray = createArray(arrayPagMain, currentVac, totalPages);
       dispatch(savePaginationMain(newArray));
-    } else {
-      const newArray = createArray(currentArray, current, pages);
-      dispatch(savePaginationMain(newArray));
+    } else if (typePage === 'favor') {
+      const newArray = createArray(arrayPagFavor, currentFav, totalPages);
+      dispatch(savePaginationFavor(newArray));
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [current, pages, dispatch]);
+  }, [currentVac, currentFav, totalPages, dispatch]);
 }

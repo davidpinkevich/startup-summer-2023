@@ -8,6 +8,11 @@ const initialState: TInitialState = {
   access_token: '',
   token_type: '',
   loadingData: 'start',
+  currentPagVac: 1,
+  currentPagFavor: 1,
+  arrayPagMain: [],
+  arrayPagFavor: [],
+  totalVacancies: 0,
 };
 
 // export const getData = createAsyncThunk('jobs/getData', async (data: TDataResponse) => {
@@ -54,6 +59,18 @@ const jobsSlice = createSlice({
     clearResponse: (state) => {
       state.vacancies = [];
     },
+    changePagVacancies: (state, action) => {
+      state.currentPagVac = action.payload;
+    },
+    savePaginationMain: (state, action) => {
+      state.arrayPagMain = action.payload;
+    },
+    changePagFavor: (state, action) => {
+      state.currentPagFavor = action.payload;
+    },
+    savePaginationFavor: (state, action) => {
+      state.arrayPagFavor = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -62,7 +79,8 @@ const jobsSlice = createSlice({
       })
       .addCase(getData.fulfilled, (state, action) => {
         state.loadingData = 'start';
-        state.vacancies = action.payload;
+        state.vacancies = action.payload.objects;
+        state.totalVacancies = action.payload.total;
       })
       .addCase(getData.rejected, (state) => {
         state.loadingData = 'error';
@@ -72,5 +90,15 @@ const jobsSlice = createSlice({
 
 const { actions, reducer } = jobsSlice;
 export default reducer;
-export const { getCatalogues, getToken, getTokenType, getVacancies, changeLoading, clearResponse } =
-  actions;
+export const {
+  getCatalogues,
+  getToken,
+  getTokenType,
+  getVacancies,
+  changeLoading,
+  clearResponse,
+  changePagVacancies,
+  savePaginationMain,
+  changePagFavor,
+  savePaginationFavor,
+} = actions;
