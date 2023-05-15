@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { savePaginationMain, savePaginationFavor } from '../../redux/slice';
+import { savePaginationMain, savePaginationFavor } from '../../redux/slices/sliceJobs';
 import { createArray } from '../../utils';
 
 export function useLogicPagination(

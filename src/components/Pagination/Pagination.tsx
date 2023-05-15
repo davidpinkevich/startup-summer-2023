@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { changePagVacancies } from '../../redux/slice';
+import { changePagVacancies } from '../../redux/slices/sliceJobs';
 import { useLogicPagination } from './useLogic';
 import { TStore } from '../../types';
 import './Pagination.scss';
