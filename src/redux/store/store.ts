@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import jobs from '../slices/sliceJobs';
+import filters from '../slices/SliceFilters';
 
 const store = configureStore({
-  reducer: { jobs },
+  reducer: { jobs, filters },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
   devTools: process.env.NODE_ENV !== 'production',
 });
