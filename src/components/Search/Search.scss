@@ -17,6 +17,12 @@
     &::placeholder {
       color: #acadb9;
     }
+
+    &:disabled {
+      background-color: #ffffff;
+      pointer-events: none;
+      color: #c2c6cf;
+    }
   }
 
   &-button {
@@ -34,10 +40,15 @@
     font-weight: 500;
     line-height: 21px;
     color: #ffffff;
+    &:disabled {
+      background-color: #9dbfff;
+      pointer-events: none;
+    }
   }
 
   &-img {
     position: absolute;
+    pointer-events: none;
     top: 16px;
     left: 12px;
     width: 16px;

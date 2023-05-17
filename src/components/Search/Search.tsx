@@ -16,6 +16,7 @@ function Search() {
   const { searchValue, category, fromSalary, toSalary } = useSelector(
     (state: TStore) => state.filters
   );
+  const { loadingData } = useSelector((state: TStore) => state.jobs);
   const dispatch = useDispatch();
 
   function changeInput(event: React.ChangeEvent<HTMLInputElement>) {
@@ -36,13 +37,14 @@ function Search() {
           <img src={glass} alt="glass" />
         </div>
         <input
+          disabled={loadingData === 'loading'}
           className="jobs__search-input"
           type="text"
           placeholder="Введите название вакансии"
           value={searchValue}
           onChange={changeInput}
         />
-        <button className="jobs__search-button" type="submit">
+        <button disabled={loadingData === 'loading'} className="jobs__search-button" type="submit">
           Поиск
         </button>
       </form>
