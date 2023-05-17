@@ -1,13 +1,21 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { subSearch, subCategory } from '../../redux/slices/sliceJobs';
+import {
+  subSearch,
+  subCategory,
+  subSalaryFrom,
+  subSalaryTo,
+  clearCurrentMainPages,
+} from '../../redux/slices/sliceJobs';
 import { changeSearch } from '../../redux/slices/SliceFilters';
 import { TStore } from '../../types';
 import glass from '../../assets/icons/glass.svg';
 import './Search.scss';
 
 function Search() {
-  const { searchValue, category } = useSelector((state: TStore) => state.filters);
+  const { searchValue, category, fromSalary, toSalary } = useSelector(
+    (state: TStore) => state.filters
+  );
   const dispatch = useDispatch();
 
   function changeInput(event: React.ChangeEvent<HTMLInputElement>) {
@@ -17,6 +25,9 @@ function Search() {
     event.preventDefault();
     dispatch(subSearch(searchValue));
     dispatch(subCategory(category));
+    dispatch(subSalaryFrom(fromSalary));
+    dispatch(subSalaryTo(toSalary));
+    dispatch(clearCurrentMainPages(1));
   }
   return (
     <div>

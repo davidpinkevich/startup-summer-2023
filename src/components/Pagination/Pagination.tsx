@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { changePagVacancies } from '../../redux/slices/sliceJobs';
 import { useLogicPagination } from './useLogic';
+import left from '../../assets/icons/arrow-left.svg';
+import right from '../../assets/icons/arrow-right.svg';
 import { TStore } from '../../types';
 import './Pagination.scss';
 
@@ -37,11 +39,13 @@ function Pagination({ page, total }: TPagination) {
   return (
     <div className="pagination">
       <button
-        disabled={loadingData === 'loading'}
+        disabled={loadingData === 'loading' || currentPagVac === 1}
         onClick={() => changePage('DEC')}
         className="pagination__back"
       >
-        Back
+        <span className="pagination__img">
+          <img src={left} alt="arrow-left" />
+        </span>
       </button>
       {arrayPagMain.map((item, index) => (
         <button
@@ -50,15 +54,17 @@ function Pagination({ page, total }: TPagination) {
           key={index}
           onClick={() => changePage('CHANGE', item)}
         >
-          {item}
+          <span>{item}</span>
         </button>
       ))}
       <button
-        disabled={loadingData === 'loading'}
+        disabled={loadingData === 'loading' || currentPagVac === total}
         onClick={() => changePage('INC')}
         className="pagination__next"
       >
-        Next
+        <span className="pagination__img">
+          <img src={right} alt="arrow-right" />
+        </span>
       </button>
     </div>
   );
