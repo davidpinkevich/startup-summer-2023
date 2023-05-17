@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { AUTH_DATA } from '../../constants';
-import { TInitialState } from '../../types';
+import { TInitialStateJobs } from '../../types';
 
-const initialState: TInitialState = {
+const initialState: TInitialStateJobs = {
   catalogues: [],
   vacancies: [],
   description: '',
@@ -14,7 +14,8 @@ const initialState: TInitialState = {
   arrayPagMain: [],
   arrayPagFavor: [],
   totalVacancies: 0,
-  valueSearch: '',
+  search: '',
+  categoryType: '',
 };
 
 // export const getData = createAsyncThunk('jobs/getData', async (data: TDataResponse) => {
@@ -43,6 +44,12 @@ const jobsSlice = createSlice({
   name: 'jobs',
   initialState,
   reducers: {
+    subSearch: (state, action) => {
+      state.search = action.payload;
+    },
+    subCategory: (state, action) => {
+      state.categoryType = action.payload;
+    },
     getCatalogues: (state, action) => {
       state.catalogues = action.payload;
     },
@@ -107,4 +114,6 @@ export const {
   savePaginationMain,
   changePagFavor,
   savePaginationFavor,
+  subSearch,
+  subCategory,
 } = actions;
