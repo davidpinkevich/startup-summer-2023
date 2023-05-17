@@ -13,7 +13,6 @@ function FromSalary() {
   function changeInput(value: number | '') {
     dispatch(changeFrom(value));
   }
-  console.log('fromSalary: ', fromSalary);
 
   return (
     <NumberInput
