@@ -16,6 +16,8 @@ const initialState: TInitialStateJobs = {
   totalVacancies: 0,
   search: '',
   categoryType: '',
+  salaryFrom: '',
+  salaryTo: '',
 };
 
 // export const getData = createAsyncThunk('jobs/getData', async (data: TDataResponse) => {
@@ -50,6 +52,12 @@ const jobsSlice = createSlice({
     subCategory: (state, action) => {
       state.categoryType = action.payload;
     },
+    subSalaryFrom: (state, action) => {
+      state.salaryFrom = action.payload;
+    },
+    subSalaryTo: (state, action) => {
+      state.salaryTo = action.payload;
+    },
     getCatalogues: (state, action) => {
       state.catalogues = action.payload;
     },
@@ -73,6 +81,9 @@ const jobsSlice = createSlice({
     },
     savePaginationMain: (state, action) => {
       state.arrayPagMain = action.payload;
+    },
+    clearCurrentMainPages: (state, action) => {
+      state.currentPagVac = action.payload;
     },
     changePagFavor: (state, action) => {
       state.currentPagFavor = action.payload;
@@ -116,4 +127,7 @@ export const {
   savePaginationFavor,
   subSearch,
   subCategory,
+  subSalaryFrom,
+  subSalaryTo,
+  clearCurrentMainPages,
 } = actions;
