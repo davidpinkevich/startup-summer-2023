@@ -1,0 +1,14 @@
+.jobs__filters {
+  font-family: 'Iner';
+  padding: 20px;
+  gap: 10px;
+  width: 315px;
+  height: 360px;
+  background: #ffffff;
+  border: 1px solid #eaebed;
+  border-radius: 12px;
+
+  &-form {
+    width: 100%;
+  }
+}

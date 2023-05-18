@@ -3,7 +3,7 @@ import ClearButton from '../ClearButton/ClearButton';
 
 function HeaderFilters() {
   return (
-    <Group position="apart">
+    <Group h="20px" position="apart">
       <Text weight={700} size="20px">
         Фильтры
       </Text>
