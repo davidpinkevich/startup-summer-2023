@@ -9,6 +9,7 @@ function SubmitButton() {
       loading={loadingData === 'loading'}
       type="submit"
       radius="8px"
+      h="40px"
       size="lg"
       loaderPosition="center"
       styles={{ root: { fontSize: 14, fontWeight: 500, fontFamily: 'Inter' } }}
