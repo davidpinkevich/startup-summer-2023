@@ -16,17 +16,17 @@ function ListItems() {
   const pages = getTotalPages(totalVacancies);
   return (
     <section className="jobs">
+      <Search />
       {loadingData === 'loading' && <Loading type />}
       {loadingData === 'start' && (
         <div className="jobs__items">
-          <Search />
           {!!vacancies.length &&
             vacancies.map((data) => {
               return <Item data={data} key={uuidv4()} />;
             })}
         </div>
       )}
-      {pages > 1 && <Pagination page="main" total={pages} />}
+      {pages > 1 && loadingData === 'start' && <Pagination page="main" total={pages} />}
     </section>
   );
 }
