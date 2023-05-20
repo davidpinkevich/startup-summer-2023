@@ -20,7 +20,6 @@ export function useLogicPagination(
       const newArray = createArray(arrayPagFavor, currentFav, totalPages);
       dispatch(savePaginationFavor(newArray));
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentVac, currentFav, totalPages, dispatch]);
 }

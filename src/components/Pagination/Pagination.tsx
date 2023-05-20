@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { changePagVacancies } from '../../redux/slices/sliceJobs';
+import { changePagVacancies, changePagFavor } from '../../redux/slices/sliceJobs';
 import { useLogicPagination } from './useLogic';
 import left from '../../assets/icons/arrow-left.svg';
 import right from '../../assets/icons/arrow-right.svg';
@@ -28,18 +28,23 @@ function Pagination({ page, total }: TPagination) {
     } else if (type === 'CHANGE' && id && page === 'main') {
       dispatch(changePagVacancies(id));
     } else if (type === 'INC' && page === 'favor' && currentPagFavor < total) {
-      dispatch(changePagVacancies(currentPagFavor + 1));
+      dispatch(changePagFavor(currentPagFavor + 1));
     } else if (type === 'DEC' && page === 'favor' && currentPagFavor > 1) {
-      dispatch(changePagVacancies(currentPagFavor - 1));
+      dispatch(changePagFavor(currentPagFavor - 1));
     } else if (type === 'CHANGE' && id && page === 'favor') {
-      dispatch(changePagVacancies(id));
+      dispatch(changePagFavor(id));
     }
   }
+
+  const arr = page === 'main' ? arrayPagMain : arrayPagFavor;
+  // console.log('arr: ', arr);
 
   return (
     <div className="pagination">
       <button
-        disabled={loadingData === 'loading' || currentPagVac === 1}
+        disabled={
+          loadingData === 'loading' || (page === 'main' ? currentPagVac : currentPagFavor) === 1
+        }
         onClick={() => changePage('DEC')}
         className="pagination__back"
       >
@@ -47,10 +52,14 @@ function Pagination({ page, total }: TPagination) {
           <img src={left} alt="arrow-left" />
         </span>
       </button>
-      {arrayPagMain.map((item, index) => (
+      {arr.map((item, index) => (
         <button
           disabled={loadingData === 'loading'}
-          className={currentPagVac === item ? 'pagination__change active' : 'pagination__change'}
+          className={
+            (page === 'main' ? currentPagVac : currentPagFavor) === item
+              ? 'pagination__change active'
+              : 'pagination__change'
+          }
           key={index}
           onClick={() => changePage('CHANGE', item)}
         >
@@ -58,7 +67,9 @@ function Pagination({ page, total }: TPagination) {
         </button>
       ))}
       <button
-        disabled={loadingData === 'loading' || currentPagVac === total}
+        disabled={
+          loadingData === 'loading' || (page === 'main' ? currentPagVac : currentPagFavor) === total
+        }
         onClick={() => changePage('INC')}
         className="pagination__next"
       >
