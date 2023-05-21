@@ -1,10 +1,16 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import Main from '../../pages/Main';
-import Favorites from '../../pages/Favorites';
-import Vacancy from '../../pages/Vacancy';
+import Main from '../../pages/Main/Main';
+import Favorites from '../../pages/Favorites/Favorites';
+import Vacancy from '../../pages/Vacancy/Vacancy';
 import Header from '../Header/Header';
+import NotFound from '../../pages/NotFound/NotFound';
+import './App.scss';
 
 function App() {
+  if (!localStorage.getItem('favorites')) {
+    localStorage.setItem('favorites', '[]');
+  }
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -12,10 +18,9 @@ function App() {
           <Route path="/" element={<Header />}>
             <Route index element={<Main />} />
             <Route path="favorites" element={<Favorites />} />
-            <Route path="vacancies" element={<Main />} />
             <Route path="/vacancies/:id" element={<Vacancy />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
-          <Route path="*" element={<div>Not found</div>} />
         </Routes>
       </div>
     </BrowserRouter>

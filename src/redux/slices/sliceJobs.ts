@@ -91,9 +91,7 @@ const jobsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getData.pending, (state, action) => {
-        console.log('ERROR: ', action.payload);
-        console.log('one');
+      .addCase(getData.pending, (state) => {
         state.loadingData = 'loading';
       })
       .addCase(getData.fulfilled, (state, action) => {
