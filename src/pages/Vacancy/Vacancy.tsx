@@ -6,6 +6,7 @@ import { BASE_URL } from '../../constants';
 import { TAppDispatch } from '../../redux/store/store';
 import Item from '../../components/Item/Item';
 import Loading from '../../components/Loading/Loading';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import { TStore } from '../../types';
 import './Vacancy.scss';
 
@@ -22,8 +23,9 @@ function Vacancy() {
   return (
     <main className="vacancy">
       {loadingData === 'loading' && <Loading type={false} />}
-      {!!description.length && <Item data={description[0]} />}
-      {!!description.length && (
+      {loadingData === 'start' && description[0]?.error && <ErrorMessage />}
+      {!!description.length && !description[0].error && <Item data={description[0]} />}
+      {!!description.length && !description[0].error && (
         <div
           className="vacancy__description"
           dangerouslySetInnerHTML={{ __html: description[0].vacancyRichText }}

@@ -20,6 +20,7 @@ export type TDataFindVacancies = {
   currency: string;
   id: number;
   vacancyRichText: string;
+  error?: { message: string };
 };
 
 export type TArrayVacancies = {
