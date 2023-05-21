@@ -1,0 +1,24 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.jobs__main {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  height: 100%;
+  width: 1146px;
+  padding: 0 15px;
+
+  @media (max-width: $md2) {
+    @include adaptiv-320(width, 1146, 320);
+    @include adaptiv-320(gap, 28, 10);
+  }
+
+  @media (max-width: 760px) {
+    flex-direction: column;
+  }
+
+  &-error {
+    font-size: 32px;
+  }
+}
