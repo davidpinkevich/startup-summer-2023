@@ -40,8 +40,8 @@
     }
 
     &:disabled {
-      background: #e2e4e9;
       pointer-events: none;
+      opacity: 0.3;
     }
   }
 
