@@ -7,6 +7,7 @@ import Loading from '../Loading/Loading';
 import Pagination from '../Pagination/Pagination';
 import Item from '../Item/Item';
 import Search from '../Search/Search';
+import Empty from '../Empty/Empty';
 import './ListItems.scss';
 
 function ListItems() {
@@ -14,9 +15,11 @@ function ListItems() {
   const { loadingData, totalVacancies, vacancies } = useSelector((state: TStore) => state.jobs);
 
   const pages = getTotalPages(totalVacancies);
+
   return (
     <section className="jobs">
       <Search />
+      {!totalVacancies && loadingData === 'start' && <Empty />}
       {loadingData === 'loading' && <Loading type />}
       {loadingData === 'start' && (
         <div className="jobs__items">
@@ -26,7 +29,7 @@ function ListItems() {
             })}
         </div>
       )}
-      {pages > 1 && loadingData === 'start' && <Pagination page="main" total={pages} />}
+      {pages > 1 && <Pagination page="main" total={pages} />}
     </section>
   );
 }
