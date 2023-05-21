@@ -1,3 +1,6 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
 .jobs__item {
   position: relative;
   font-family: 'Inter', sans-serif;
@@ -6,10 +9,18 @@
   gap: 12px;
   font-style: normal;
   padding: 24px;
+  padding-right: 50px;
+  width: 100%;
   background-color: #ffffff;
   border: 1px solid #eaebed;
   border-radius: 12px;
   transition: all 0.2s;
+
+  @media (max-width: $md2) {
+    @include adaptiv-320(gap, 12, 4);
+    @include adaptiv-320(padding, 24, 10);
+    padding-right: 50px;
+  }
 
   &:hover {
     transform: scale(1.02);
@@ -78,10 +89,18 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  @media (max-width: 940px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
   & span {
     display: inline-block;
     width: 9px;
     color: #7b7c88;
+    @media (max-width: 940px) {
+      display: none;
+    }
   }
   &__salary {
     font-weight: 600;
