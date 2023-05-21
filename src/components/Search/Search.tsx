@@ -42,7 +42,7 @@ function Search() {
           icon={<img src={glass} alt="glass" />}
           rightSection={<SearchButton />}
           styles={styles}
-          placeholder="Введите название вакансии"
+          placeholder={window.innerWidth > 500 ? 'Введите название вакансии' : 'Введите вакансию'}
         />
       </form>
     </>
