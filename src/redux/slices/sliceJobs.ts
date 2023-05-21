@@ -5,7 +5,8 @@ import { TInitialStateJobs } from '../../types';
 const initialState: TInitialStateJobs = {
   catalogues: [],
   vacancies: [],
-  description: '',
+  favorites: [],
+  description: [],
   access_token: '',
   token_type: '',
   loadingData: 'start',
@@ -20,21 +21,11 @@ const initialState: TInitialStateJobs = {
   salaryTo: '',
 };
 
-// export const getData = createAsyncThunk('jobs/getData', async (data: TDataResponse) => {
-//   const response = await fetch(`${url}`, {
-//     headers: {
-//       Authorization: `Bearer ${data.token}`,
-//       'x-secret-key': AUTH_DATA.X_SECRET_KEY,
-//       'X-Api-App-Id': AUTH_DATA.CLIENT_SECRET,
-//     },
-//   });
-//   return await response.json();
-// });
-
 export const getData = createAsyncThunk('jobs/getData', async (url: string) => {
+  const tokenLS = localStorage.getItem('token');
   const response = await fetch(`${url}`, {
     headers: {
-      // Authorization: `${data.type} ${data.token}`,
+      Authorization: `Bearer ${tokenLS}`,
       'x-secret-key': AUTH_DATA.X_SECRET_KEY,
       'X-Api-App-Id': AUTH_DATA.CLIENT_SECRET,
     },
@@ -76,6 +67,9 @@ const jobsSlice = createSlice({
     clearResponse: (state) => {
       state.vacancies = [];
     },
+    clearDescription: (state) => {
+      state.description = [];
+    },
     changePagVacancies: (state, action) => {
       state.currentPagVac = action.payload;
     },
@@ -91,6 +85,9 @@ const jobsSlice = createSlice({
     savePaginationFavor: (state, action) => {
       state.arrayPagFavor = action.payload;
     },
+    setFavorites: (state, action) => {
+      state.favorites = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -101,10 +98,11 @@ const jobsSlice = createSlice({
         state.loadingData = 'start';
         if (action.payload.objects) {
           state.vacancies = action.payload.objects;
+          state.totalVacancies = action.payload.total;
         } else {
-          state.description = action.payload.vacancyRichText;
+          state.description = [action.payload];
+          state.totalVacancies = 0;
         }
-        state.totalVacancies = action.payload.total;
       })
       .addCase(getData.rejected, (state) => {
         state.loadingData = 'error';
@@ -130,4 +128,6 @@ export const {
   subSalaryFrom,
   subSalaryTo,
   clearCurrentMainPages,
+  setFavorites,
+  clearDescription,
 } = actions;
