@@ -1,9 +1,16 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
 .loading {
+  flex: 1 1 auto;
   text-align: center;
   font-family: 'Roboto', sans-serif;
   font-size: 54px;
   color: rgb(94, 150, 252);
-  margin-top: 10%;
+  margin-top: 20%;
+
+  @media (max-width: $md2) {
+    @include adaptiv-320(font-size, 54, 20);
+  }
   & span {
     display: inline-block;
     width: 10px;
