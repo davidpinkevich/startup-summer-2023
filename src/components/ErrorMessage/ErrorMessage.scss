@@ -1,0 +1,15 @@
+.jobs__error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  gap: 10px;
+
+  &-message {
+    font-size: 38px;
+    font-weight: 500;
+    font-family: 'Inter';
+    color: rgba(94, 150, 252, 1);
+  }
+}
