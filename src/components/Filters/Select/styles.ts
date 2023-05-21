@@ -14,10 +14,11 @@ export const styles = {
   },
   item: {
     fontSize: 14,
+    whiteSpace: 'initial',
     fontFamily: 'Inter',
     '&[data-selected]': {
-      backgroundColor: 'rgba(172, 173, 185, 1)',
-      color: '#ffffff',
+      backgroundColor: 'rgba(222, 236, 255, 1)',
+      color: 'rgba(35, 33, 52, 1)',
     },
 
     '&[data-hovered]': {
