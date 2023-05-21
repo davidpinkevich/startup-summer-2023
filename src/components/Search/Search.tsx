@@ -1,4 +1,5 @@
 import React from 'react';
+import { TextInput } from '@mantine/core';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   subSearch,
@@ -10,13 +11,14 @@ import {
 import { changeSearch } from '../../redux/slices/SliceFilters';
 import { TStore } from '../../types';
 import glass from '../../assets/icons/glass.svg';
-import './Search.scss';
+import SearchButton from './SearchButton/SearchButton';
+import { styles } from './styles';
 
 function Search() {
   const { searchValue, category, fromSalary, toSalary } = useSelector(
     (state: TStore) => state.filters
   );
-  const { loadingData } = useSelector((state: TStore) => state.jobs);
+
   const dispatch = useDispatch();
 
   function changeInput(event: React.ChangeEvent<HTMLInputElement>) {
@@ -31,24 +33,19 @@ function Search() {
     dispatch(clearCurrentMainPages(1));
   }
   return (
-    <div>
-      <form className="jobs__search" onSubmit={submitFilters}>
-        <div className="jobs__search-img">
-          <img src={glass} alt="glass" />
-        </div>
-        <input
-          disabled={loadingData === 'loading'}
-          className="jobs__search-input"
-          type="text"
-          placeholder="Введите название вакансии"
+    <>
+      <form style={{ width: '100%' }} className="jobs__search" onSubmit={submitFilters}>
+        <TextInput
           value={searchValue}
           onChange={changeInput}
+          radius={8}
+          icon={<img src={glass} alt="glass" />}
+          rightSection={<SearchButton />}
+          styles={styles}
+          placeholder="Введите название вакансии"
         />
-        <button disabled={loadingData === 'loading'} className="jobs__search-button" type="submit">
-          Поиск
-        </button>
       </form>
-    </div>
+    </>
   );
 }
 
