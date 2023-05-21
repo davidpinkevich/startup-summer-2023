@@ -11,6 +11,7 @@ function SearchButton() {
       loaderPosition="center"
       radius={8}
       type="submit"
+      data-elem="search-button"
       styles={styles}
     >
       {loadingData === 'start' && 'Поиск'}

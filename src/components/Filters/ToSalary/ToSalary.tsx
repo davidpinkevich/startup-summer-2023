@@ -24,6 +24,7 @@ function ToSalary() {
       rightSectionWidth={40}
       type="number"
       placeholder="До"
+      data-elem="salary-to-input"
       styles={styles}
     />
   );

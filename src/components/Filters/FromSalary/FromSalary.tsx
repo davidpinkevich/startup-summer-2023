@@ -25,6 +25,7 @@ function FromSalary() {
       type="number"
       placeholder="От"
       description="Оклад"
+      data-elem="salary-from-input"
       styles={styles}
     />
   );

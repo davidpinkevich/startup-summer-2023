@@ -13,6 +13,7 @@ function SubmitButton() {
       h="40px"
       size="lg"
       loaderPosition="center"
+      data-elem="search-button"
       styles={styles}
     >
       {loadingData === 'start' && 'Применить'}

@@ -50,9 +50,10 @@ function Item({ data }: TItem) {
   }
 
   return (
-    <NavLink to={`/vacancies/${data.id}`}>
+    <NavLink to={`/vacancies/${data.id}`} data-elem={`vacancy-${data.id}`}>
       <div className="jobs__item">
         <button
+          data-elem={`vacancy-${data.id}-shortlist-button`}
           onClick={(event) => {
             addLs(event, data.id);
           }}
