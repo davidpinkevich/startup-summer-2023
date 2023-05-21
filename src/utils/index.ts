@@ -1,19 +1,20 @@
 import { BASE_URL, PAGINATION_LENGTH, PAGINATION_COUNT } from '../constants';
+import { TDataFindVacancies } from '../types';
 
-export function createArray(arrayPagMain: Array<number>, current: number, pages: number) {
+export function createArray(arrayCurrent: Array<number>, current: number, pages: number) {
   const array = new Array(pages >= 3 ? PAGINATION_LENGTH : pages);
-  if (!arrayPagMain.length || array.length !== arrayPagMain.length) {
+  if (!arrayCurrent.length || array.length !== arrayCurrent.length) {
     for (let i = 0; i < array.length; i += 1) {
       array[i] = i + 1;
     }
     return array;
-  } else if (arrayPagMain.length && current <= pages && current >= 1) {
-    if (arrayPagMain.filter((item) => item === current).length) {
-      return arrayPagMain;
-    } else if (arrayPagMain[arrayPagMain.length - 1] + 1 === current) {
-      return arrayPagMain.map((item) => item + 1);
-    } else if (arrayPagMain[0] - 1 === current) {
-      return arrayPagMain.map((item) => item - 1);
+  } else if (arrayCurrent.length && current <= pages && current >= 1) {
+    if (arrayCurrent.filter((item) => item === current).length) {
+      return arrayCurrent;
+    } else if (arrayCurrent[arrayCurrent.length - 1] + 1 === current) {
+      return arrayCurrent.map((item) => item + 1);
+    } else if (arrayCurrent[0] - 1 === current) {
+      return arrayCurrent.map((item) => item - 1);
     } else {
       for (let i = 0; i < array.length; i += 1) {
         array[i] = i + 1;
@@ -22,7 +23,6 @@ export function createArray(arrayPagMain: Array<number>, current: number, pages:
     }
   }
 }
-
 export function createUrl(
   page: number,
   search: string,
@@ -40,4 +40,20 @@ export function createUrl(
   ];
   if (from || to) arr.push('no_agreement=1');
   return arr.filter((item) => item).join('&');
+}
+
+export function createResult(favorites: Array<TDataFindVacancies>) {
+  const newArr = [...favorites];
+  const result: TDataFindVacancies[][] = [];
+
+  for (let i = 0; i < newArr.length; i += PAGINATION_COUNT) {
+    const blockFavorites = newArr.slice(i, i + PAGINATION_COUNT);
+    result.push(blockFavorites);
+  }
+
+  return result;
+}
+
+export function getTotalPages(number: number) {
+  return number < 500 ? Math.ceil(number / PAGINATION_COUNT) : Math.ceil(500 / PAGINATION_COUNT);
 }
