@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Button } from '@mantine/core';
 import { TStore } from '../../../types';
+import { styles } from './styles';
 
 function SubmitButton() {
   const { loadingData } = useSelector((state: TStore) => state.jobs);
@@ -12,7 +13,7 @@ function SubmitButton() {
       h="40px"
       size="lg"
       loaderPosition="center"
-      styles={{ root: { fontSize: 14, fontWeight: 500, fontFamily: 'Inter' } }}
+      styles={styles}
     >
       {loadingData === 'start' && 'Применить'}
     </Button>
