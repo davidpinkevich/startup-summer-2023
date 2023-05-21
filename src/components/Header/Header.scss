@@ -8,7 +8,6 @@
   width: 100%;
   background-color: #ffffff;
   margin-bottom: 40px;
-  font-family: 'Inter';
 
   @media (max-width: $md2) {
     @include adaptiv-320(margin-bottom, 40, 8);
@@ -38,6 +37,8 @@
     align-items: center;
     gap: 12px;
     padding: 3px 0;
+    font-family: 'Poppins';
+    font-weight: 600;
     @media (max-width: 500px) {
       display: none;
     }
