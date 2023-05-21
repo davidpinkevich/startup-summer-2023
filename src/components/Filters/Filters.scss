@@ -1,14 +1,25 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
 .jobs__filters {
   font-family: 'Iner';
-  padding: 20px;
   gap: 10px;
-  width: 315px;
+  min-width: 315px;
+
+  @media (max-width: 400px) {
+    min-width: 280px;
+  }
+
   height: 360px;
   background: #ffffff;
   border: 1px solid #eaebed;
   border-radius: 12px;
 
   &-form {
-    width: 100%;
+    min-width: 315px;
+    padding: 20px;
+    @media (max-width: 400px) {
+      min-width: 280px;
+    }
   }
 }
