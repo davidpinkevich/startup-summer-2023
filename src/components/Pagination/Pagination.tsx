@@ -37,7 +37,6 @@ function Pagination({ page, total }: TPagination) {
   }
 
   const arr = page === 'main' ? arrayPagMain : arrayPagFavor;
-  // console.log('arr: ', arr);
 
   return (
     <div className="pagination">
