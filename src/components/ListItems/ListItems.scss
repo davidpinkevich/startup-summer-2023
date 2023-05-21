@@ -1,12 +1,22 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
 .jobs {
   display: flex;
   flex-direction: column;
-  width: 773px;
+  align-items: center;
+  width: 100%;
+  min-height: 732px;
 
   &__items {
     display: flex;
+    width: 100%;
     flex-direction: column;
     gap: 16px;
     margin-bottom: 40px;
+    @media (max-width: $md2) {
+      @include adaptiv-320(gap, 16, 4);
+      @include adaptiv-320(margin-bottom, 40, 10);
+    }
   }
 }
