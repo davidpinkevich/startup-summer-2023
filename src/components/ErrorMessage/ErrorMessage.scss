@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .jobs__error {
   display: flex;
   justify-content: center;
@@ -9,7 +11,7 @@
   &-message {
     font-size: 38px;
     font-weight: 500;
-    font-family: 'Inter';
-    color: rgba(94, 150, 252, 1);
+    font-family: $mainFont;
+    color: $blueColor;
   }
 }

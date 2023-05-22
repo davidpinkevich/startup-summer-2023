@@ -3,7 +3,7 @@
 
 .jobs__item {
   position: relative;
-  font-family: 'Inter', sans-serif;
+  font-family: $mainFont;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -24,7 +24,7 @@
 
   &:hover {
     transform: scale(1.02);
-    box-shadow: inset 0px 0px 2px 2px rgb(138, 171, 242);
+    box-shadow: inset 0px 0px 2px 2px $blueColor;
   }
 
   &-button {
@@ -53,9 +53,9 @@
 
   &-profession {
     font-weight: 600;
-    font-size: 20px;
+    font-size: $titleFontSize;
     line-height: 24px;
-    color: #5e96fc;
+    color: $blueColor;
   }
 
   &-town {
@@ -63,7 +63,7 @@
     align-items: center;
     gap: 8px;
     font-weight: 400;
-    font-size: 16px;
+    $mainFontSize: 16px;
     line-height: 19px;
     color: #232134;
 

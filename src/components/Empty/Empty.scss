@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .jobs__empty {
   display: flex;
   flex-direction: column;
@@ -28,7 +30,7 @@
   }
 
   &-title {
-    font-family: 'Inter';
+    font-family: $mainFont;
     font-weight: 700;
     width: 100%;
     font-size: 24px;
@@ -51,10 +53,10 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 155%;
-    color: #3b7cd3;
+    color: $blueColor;
     transition: all 0.2s;
     &:hover {
-      background: #2a71d3;
+      background: $blueColor;
       color: #ffffff;
       transform: scale(1.05);
     }

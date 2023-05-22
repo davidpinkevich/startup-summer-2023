@@ -25,27 +25,39 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 16px;
+    font-size: $mainFontSize;
     line-height: 20px;
   }
 
   &-logo {
     display: flex;
+    align-items: center;
     position: absolute;
     top: 0;
     left: 15px;
-    align-items: center;
     gap: 12px;
     padding: 3px 0;
     font-family: 'Poppins';
+    font-size: 24px;
     font-weight: 600;
-    @media (max-width: 500px) {
-      display: none;
+    & p {
+      @media (max-width: 560px) {
+        font-size: 18px;
+      }
     }
+    & p {
+      @media (max-width: 500px) {
+        display: none;
+      }
+    }
+
     &-img {
       position: relative;
       height: 30px;
       width: 30px;
+      @media (max-width: 500px) {
+        transform: scale(0.7);
+      }
       & img {
         position: absolute;
         top: 0;
@@ -59,10 +71,11 @@
   &-menu {
     display: flex;
     gap: 60px;
-    @media (max-width: 580px) {
+    @media (max-width: 610px) {
       gap: 15px;
     }
     & a {
+      font-family: $mainFont;
       &:hover {
         transform: scale(1.05);
       }
@@ -72,10 +85,12 @@
 
 .menu__link {
   transition: all 0.1s;
+  font-family: $mainFont;
   color: rgba(35, 33, 52, 1);
 }
 
 .menu__link-active {
+  font-family: $mainFont;
   transition: all 0.1s;
   color: rgba(94, 150, 252, 1);
 }
