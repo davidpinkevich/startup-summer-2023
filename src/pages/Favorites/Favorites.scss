@@ -1,0 +1,27 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.favorites {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 104px;
+  width: 803px;
+  padding: 0px 15px;
+
+  @media (max-width: $md2) {
+    @include adaptiv-320(width, 773, 320);
+    @include adaptiv-320(gap, 104, 31);
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 16px;
+
+    @media (max-width: $md2) {
+      @include adaptiv-320(gap, 16, 4);
+    }
+  }
+}

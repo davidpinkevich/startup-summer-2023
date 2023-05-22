@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@600&family=Poppins:wght@400;600&family=Roboto&display=swap');
+@import '../../styles/normalize.scss';
+@import '../../styles/variables.scss';
+
+html {
+  height: 100vh;
+  font-family: $mainFont;
+  background-color: #f5f5f5;
+}
+.App {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+}

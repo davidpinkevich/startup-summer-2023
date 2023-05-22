@@ -1,0 +1,118 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.jobs__item {
+  position: relative;
+  font-family: $mainFont;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-style: normal;
+  padding: 24px;
+  padding-right: 50px;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #eaebed;
+  border-radius: 12px;
+  transition: all 0.2s;
+
+  @media (max-width: $md2) {
+    @include adaptiv-320(gap, 12, 4);
+    @include adaptiv-320(padding, 24, 10);
+    padding-right: 50px;
+  }
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: inset 0px 0px 2px 2px $blueColor;
+  }
+
+  &-button {
+    position: absolute;
+    background-color: #ffffff;
+    width: 22px;
+    height: 22px;
+    top: 25px;
+    right: 25px;
+    border-radius: 4px;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: #d8d8e4;
+    }
+
+    & img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      right: 0;
+      transform: all 0.5s;
+    }
+  }
+
+  &-profession {
+    font-weight: 600;
+    font-size: $titleFontSize;
+    line-height: 24px;
+    color: $blueColor;
+  }
+
+  &-town {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+    $mainFontSize: 16px;
+    line-height: 19px;
+    color: #232134;
+
+    & span {
+      position: relative;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+
+      & img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+.employment {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  @media (max-width: 940px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  & span {
+    display: inline-block;
+    width: 9px;
+    color: #7b7c88;
+    @media (max-width: 940px) {
+      display: none;
+    }
+  }
+  &__salary {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #232134;
+  }
+
+  &__type {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #232134;
+  }
+}
