@@ -14,7 +14,6 @@ export const styles = {
   },
   item: {
     fontSize: 14,
-    whiteSpace: 'initial',
     fontFamily: 'Inter',
     '&[data-selected]': {
       backgroundColor: 'rgba(222, 236, 255, 1)',

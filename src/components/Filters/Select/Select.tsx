@@ -27,7 +27,11 @@ function SelectFilter() {
       rightSection={<img src={arrow} />}
       data-elem="industry-select"
       data={data}
-      styles={{ ...styles, rightSection: { pointerEvents: 'none' } }}
+      styles={{
+        ...styles,
+        rightSection: { pointerEvents: 'none' },
+        item: { whiteSpace: 'initial', ...styles.item },
+      }}
     />
   );
 }
