@@ -21,7 +21,6 @@ const initialState: TInitialStateJobs = {
 
 export const getData = createAsyncThunk('jobs/getData', async (url: string) => {
   const tokenLS = localStorage.getItem('token');
-  console.log('getData: ', tokenLS);
   const response = await fetch(`${url}`, {
     headers: {
       Authorization: `Bearer ${tokenLS}`,
