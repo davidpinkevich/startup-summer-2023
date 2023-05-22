@@ -7,8 +7,6 @@ const initialState: TInitialStateJobs = {
   vacancies: [],
   favorites: [],
   description: [],
-  access_token: '',
-  token_type: '',
   loadingData: 'start',
   currentPagVac: 1,
   currentPagFavor: 1,
@@ -23,6 +21,7 @@ const initialState: TInitialStateJobs = {
 
 export const getData = createAsyncThunk('jobs/getData', async (url: string) => {
   const tokenLS = localStorage.getItem('token');
+  console.log('getData: ', tokenLS);
   const response = await fetch(`${url}`, {
     headers: {
       Authorization: `Bearer ${tokenLS}`,
@@ -54,12 +53,6 @@ const jobsSlice = createSlice({
     },
     getVacancies: (state, action) => {
       state.vacancies = action.payload;
-    },
-    getToken: (state, action) => {
-      state.access_token = action.payload;
-    },
-    getTokenType: (state, action) => {
-      state.token_type = action.payload;
     },
     changeLoading: (state) => {
       state.loadingData = 'start';
@@ -114,8 +107,6 @@ const { actions, reducer } = jobsSlice;
 export default reducer;
 export const {
   getCatalogues,
-  getToken,
-  getTokenType,
   getVacancies,
   changeLoading,
   clearResponse,

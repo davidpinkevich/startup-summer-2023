@@ -8,7 +8,7 @@ export type TAuthenticationData = {
 
 export type TDataRespAuth = {
   access_token: string;
-  token_type: string;
+  ttl: number;
 };
 
 export type TDataFindVacancies = {
@@ -37,8 +37,6 @@ export type TInitialStateJobs = {
   favorites: Array<TDataFindVacancies>;
   vacancies: Array<TDataFindVacancies>;
   description: Array<TDataFindVacancies>;
-  access_token: string;
-  token_type: string;
   loadingData: string;
   currentPagVac: number;
   currentPagFavor: number;

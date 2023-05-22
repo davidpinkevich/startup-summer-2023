@@ -8,9 +8,10 @@ function useLogicMain() {
   const dispatch = useDispatch();
   const { catalogues } = useSelector((state: TStore) => state.jobs);
   const tokenLS = localStorage.getItem('token');
+  const ttl = localStorage.getItem('ttl');
   useEffect(() => {
     (async () => {
-      if (!tokenLS) {
+      if (!tokenLS || (new Date().getTime() / 1000 - Number(ttl)) / 86400 > 6.9) {
         const response = await fetch(
           `${BASE_URL}oauth2/password/?login=${AUTH_DATA.LOGIN}&password=${AUTH_DATA.PASSWORD}&client_id=${AUTH_DATA.CLIENT_ID}&client_secret=${AUTH_DATA.CLIENT_SECRET}`,
           {
@@ -20,10 +21,11 @@ function useLogicMain() {
           }
         );
         const data: TDataRespAuth = await response.json();
-        const token = data.access_token;
-        localStorage.setItem('token', token);
+        localStorage.setItem('token', data.access_token);
+        localStorage.setItem('ttl', JSON.stringify(data.ttl));
       }
       if (!catalogues.length) {
+        const tokenLS = localStorage.getItem('token');
         const responseCatalogues = await fetch(`${BASE_URL}catalogues/`, {
           headers: {
             Authorization: `Bearer ${tokenLS}`,
@@ -44,7 +46,7 @@ function useLogicMain() {
         );
       }
     })();
-  }, [catalogues.length, dispatch, tokenLS]);
+  }, [catalogues.length, dispatch, tokenLS, ttl]);
 }
 
 export default useLogicMain;
