@@ -9,7 +9,7 @@ const AUTH_DATA: TAuthenticationData = {
   X_SECRET_KEY: 'GEU4nvd3rej*jeh.eqp',
 };
 
-const BASE_URL = 'https://startup-summer-2023-proxy.onrender.com/2.0/';
+const BASE_URL = 'https://jobored-proxy.vercel.app/2.0/';
 const PAGINATION_COUNT = 4;
 const PAGINATION_LENGTH = 3;
 
